@@ -18,8 +18,9 @@ npm install record-cd-train-movement
 
 ## Usage
 
-```shell
-todo
+```
+Usage:
+    record-cd-train-movement >file.ndjson
 ```
 
 

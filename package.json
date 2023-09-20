@@ -34,6 +34,7 @@
 		"node": ">=20"
 	},
 	"dependencies": {
+		"live-cd-wifi-position": "^1.0.0"
 	},
 	"devDependencies": {
 		"eslint": "^8.0.0"

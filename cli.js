@@ -36,4 +36,25 @@ if (flags.version) {
 	process.exit(0)
 }
 
-// todo
+
+import {subscribeToMovement} from './index.js'
+
+const printPosition = (ev) => {
+	return {
+		latitude: ev.latitude,
+		longitude: ev.latitude,
+		altitude: ev.altitude,
+		speed: ev.speed,
+		t: Date.now() / 1000 | 0,
+	}
+}
+
+const positions = subscribeToMovement()
+
+positions.on('error', (err) => {
+	if (process.env.NODE_ENV === 'dev') console.error(err)
+	else console.error(err.message || (err + ''))
+	process.exitCode = 1
+})
+
+positions.on('position', printPosition)
