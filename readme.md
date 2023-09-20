@@ -24,8 +24,15 @@ Usage:
 Options:
     --acknowledge-captive-portal  First attempt to acknowledge CD Wifi's captive portal.
                                     Default: false
+    --gpsd-json                   Print GPSd-compatible `TPV` JSON messages to stdout,
+                                    in order to use gpsd to use Wifi's position data as
+                                    a GPSd [1] data source.
+                                    Default: false
+                                    [1] https://gpsd.gitlab.io/gpsd/
 Examples:
     record-cd-train-movement --acknowledge-captive-portal | tee -a ec-179-praha.ndjson
+    # provide GPSd-compatible JSON messages on tcp://localhost:2947
+    record-cd-train-movement --gpsd-json | ncat -l 2947 -k --send-only
 ```
 
 
