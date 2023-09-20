@@ -20,6 +20,9 @@ const {
 			type: 'boolean',
 			short: 'v',
 		},
+		'acknowledge-captive-portal': {
+			type: 'boolean',
+		},
 	},
 })
 
@@ -27,6 +30,11 @@ if (flags.help) {
 	process.stdout.write(`
 Usage:
     record-cd-train-movement >file.ndjson
+Options:
+    --acknowledge-captive-portal  First attempt to acknowledge CD Wifi's captive portal.
+                                    Default: false
+Examples:
+    record-cd-train-movement --acknowledge-captive-portal | tee -a ec-179-praha.ndjson
 \n`)
 	process.exit(0)
 }
@@ -37,7 +45,7 @@ if (flags.version) {
 }
 
 
-import {subscribeToMovement} from './index.js'
+import {acknowledgeCaptivePortal, subscribeToMovement} from './index.js'
 
 const printPosition = (ev) => {
 	return {
@@ -47,6 +55,13 @@ const printPosition = (ev) => {
 		speed: ev.speed,
 		t: Date.now() / 1000 | 0,
 	}
+}
+
+const acknowledgeLegalTerms = async (terms) => {
+	process.stderr.write(`CD Wifi legal terms:\n\n${terms}\n`)
+}
+if (flags['acknowledge-captive-portal']) {
+	await acknowledgeCaptivePortal(acknowledgeLegalTerms)
 }
 
 const positions = subscribeToMovement()

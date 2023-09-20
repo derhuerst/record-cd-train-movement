@@ -21,6 +21,11 @@ npm install record-cd-train-movement
 ```
 Usage:
     record-cd-train-movement >file.ndjson
+Options:
+    --acknowledge-captive-portal  First attempt to acknowledge CD Wifi's captive portal.
+                                    Default: false
+Examples:
+    record-cd-train-movement --acknowledge-captive-portal | tee -a ec-179-praha.ndjson
 ```
 
 
