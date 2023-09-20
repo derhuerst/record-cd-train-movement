@@ -1,0 +1,46 @@
+{
+	"name": "record-cd-train-movement",
+	"description": "Record the movement of a České Dráhy (Czech Railways) train using its on-board WiFi.",
+	"version": "1.0.0",
+	"type": "module",
+	"main": "index.js",
+	"bin": {
+		"record-cd-train-movement": "./cli.js"
+	},
+	"files": [
+		"cli.js",
+		"index.js"
+	],
+	"keywords": [
+		"ceske drahy",
+		"cd",
+		"czech railways",
+		"wifi",
+		"cdwifi",
+		"train",
+		"track",
+		"gps",
+		"gpx"
+	],
+	"author": "Jannis R <mail@jannisr.de>",
+	"homepage": "https://github.com/derhuerst/record-cd-train-movement",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/derhuerst/record-cd-train-movement.git"
+	},
+	"bugs": "https://github.com/derhuerst/record-cd-train-movement/issues",
+	"license": "ISC",
+	"engines": {
+		"node": ">=20"
+	},
+	"dependencies": {
+	},
+	"devDependencies": {
+		"eslint": "^8.0.0"
+	},
+	"scripts": {
+		"test": "./cli.js | head -n 3 | jq",
+		"lint": "eslint .",
+		"prepublishOnly": "npm run lint && npm test"
+	}
+}
